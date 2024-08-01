@@ -31,6 +31,9 @@ git clone https://github.com/pindjouf/dotfiles.git
 cp -r dotfiles/bspwm/nvim ~/.config
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+. ~/.cargo/env
+
 rustup update
 
 cargo install --locked yazi-fm yazi-cli
