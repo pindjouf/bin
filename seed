@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+## Get the latest arch iso
+
+LOG="/var/log/arch.log"
+ex_iso=$(find / -type f -name "archlinux*.iso" 2>/dev/null)
+
+content=$(curl -s "https://archlinux.org/download/")
+
+magnet=$(echo "$content" | rg -o 'href="magnet:[^"]*' | sed 's/href="//')
+
+if [ -n "$magnet" ]; then
+  if [ -n "$ex_iso" ]; then
+    rm "$ex_iso"
+  else
+    echo "Couldn't find an existing iso" >> "$LOG"
+  fi
+  transmission-remote -a "$magnet"
+  echo "Updated arch iso on: $(date +"%d.%m.%Y")" >> "$LOG"
+  echo "Added: $magnet" >> "$LOG"
+  echo "Removed: $ex_iso" >> "$LOG"
+  echo "-----------------"
+else
+  echo "Failed updating arch on $(date +"%d.%m.%Y")"
+  echo "-----------------"
+fi
