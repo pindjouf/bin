@@ -2,6 +2,8 @@
 
 ## Bare server setup
 
+echo "" >> ~/.bashrc
+
 echo 'alias l='\''ls --group-directories-first --time-style="+%d.%m.%Y %H:%M" --color=auto -hFX'\''' >> ~/.bashrc
 
 echo 'alias ll='\''ls -l --group-directories-first --time-style="+%d.%m.%Y %H:%M" --color=auto -F'\''' >> ~/.bashrc
@@ -22,6 +24,8 @@ echo 'function yy() {
 	fi
 	rm -f -- "$tmp"
 }' >> ~/.bashrc
+
+echo "" >> ~/.bashrc
 
 mkdir ~/.config
 
