@@ -4,13 +4,31 @@
 
 echo "alias l='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -hFX'\n"\
 "alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'\n"\
-"alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'\n" >> ~/.bashrc
+"alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'\n"\
+"alias ya='yy'" >> ~/.bashrc
+
+echo 'function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}' >> ~/.bashrc
+
+mkdir ~/.config
 
 apt update -y
 
 apt full-upgrade -y
 
 apt install git snapd kitty ripgrep fzf xclip gcc make -y
+
+snap install nvim -y
+
+git clone https://github.com/pindjouf/dotfiles.git
+
+cp -r dotfiles/bspwm/nvim ~/.config
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
