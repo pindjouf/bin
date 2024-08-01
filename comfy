@@ -10,6 +10,8 @@ echo "alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" 
 
 echo "alias ya='yy'" >> ~/.bashrc
 
+echo "alias vim='nvim'" >> ~/.bashrc
+
 echo "" >> ~/.bashrc
 
 echo 'function yy() {
@@ -39,9 +41,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 echo "" >> ~/.bashrc
 
-
 . ~/.cargo/env
 
 rustup update
 
 cargo install --locked yazi-fm yazi-cli
+
+source ~/.bashrc
