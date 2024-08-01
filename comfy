@@ -10,7 +10,7 @@ echo "alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" 
 
 echo "alias ya='yy'" >> ~/.bashrc
 
-echo ""
+echo "" >> ~/.bashrc
 
 echo 'function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -37,7 +37,8 @@ cp -r dotfiles/bspwm/nvim ~/.config
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-echo ""
+echo "" >> ~/.bashrc
+
 
 . ~/.cargo/env
 
