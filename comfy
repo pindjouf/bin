@@ -2,10 +2,15 @@
 
 ## Bare server setup
 
-echo "alias l='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -hFX'\n"\
-"alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'\n"\
-"alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'\n"\
-"alias ya='yy'" >> ~/.bashrc
+echo "alias l='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -hFX'" >> ~/.bashrc
+
+echo "alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'" >> ~/.bashrc
+ 
+echo "alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'" >> ~/.bashrc
+
+echo "alias ya='yy'" >> ~/.bashrc
+
+echo ""
 
 echo 'function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -31,6 +36,8 @@ git clone https://github.com/pindjouf/dotfiles.git
 cp -r dotfiles/bspwm/nvim ~/.config
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+echo ""
 
 . ~/.cargo/env
 
