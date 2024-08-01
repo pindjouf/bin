@@ -33,7 +33,7 @@ apt update -y
 
 apt full-upgrade -y
 
-apt install git snapd kitty ripgrep fzf xclip gcc make -y
+apt install git snapd kitty ripgrep fzf xclip gcc make unzip yarn nodejs npm -y
 
 snap install nvim -y
 
