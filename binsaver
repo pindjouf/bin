@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+import time
+
+li = []
+one = True
+desired_width = 2
+increasing = True
+
+while True:
+
+    while len(li) < desired_width:
+        if one:
+            li.append(1)
+        else:
+            li.append(0)
+        one = not one
+        print(li)
+        time.sleep(0.008)
+
+    while len(li) > 1:
+        li.pop()
+        print(li)
+        time.sleep(0.008)
+
+    if increasing:
+        desired_width += 1
+        if desired_width >= 55:
+            increasing = False
+
+    else:
+        desired_width -= 1
+        if desired_width <= 2:
+            increasing = True
