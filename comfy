@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-## Bare server setup
+## Post-install bare server setup
 
 echo "" >> ~/.bashrc
 

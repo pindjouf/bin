@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+## Screensaver for the bored mind
+
 import time
 
 li = []
