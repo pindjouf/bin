@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+CWD=$(echo "${PWD##*/}")
+
+if [ -d ".git" ]; then
+    echo "This directory is already a Git repository."
+    exit 1
+else
+    git init && git add . && git commit -m "Initial commit" && git branch -M master && git remote add origin git@github.com:pindjouf/${CWD}.git && git push -u origin master
+fi
