@@ -3,19 +3,22 @@
 import re
 import sys
 
+def convert(hex_string: str) -> str:
+    result = ' '.join(re.findall('[0-9a-fA-F]{1,4}', bin(int(hex_string, 16))[2:]))
+    return result
+
 def main():
     if len(sys.argv) < 2:
         print("put a fookin argument")
         return
 
-    hex_string = sys.argv[1]
+    args = sys.argv[1:]
 
-    if not re.fullmatch('[0-9a-fA-F]+', hex_string):
-        print("gotta be a hex value")
-        return
-
-    result = ' '.join(re.findall('[0-9a-fA-F]{1,4}', bin(int(hex_string, 16))[2:]))
-    print(result)
+    for hex_string in args:
+        if not re.fullmatch('[0-9a-fA-F]+', hex_string):
+            print(f"Error: '{hex_string}' ain't a valid hex string")
+            continue
+        print(convert(hex_string))
 
 if __name__ == "__main__":
     main()
