@@ -60,7 +60,15 @@ def main():
             if i == list(j.items())[0][1]:
                 new_shit.append({list(j.items())[0][0]: datetime.datetime.fromtimestamp(i).strftime('%Y-%m-%d %H:%M:%S')})
 
+    last_shit = list()
+
     for i in new_shit:
+        if i in last_shit:
+            pass
+        else:
+            last_shit.append(i)
+
+    for i in last_shit:
         print(i)
 
 if __name__ == "__main__":
