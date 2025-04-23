@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+## Convert hex instructions to binary
+
 import re
 import sys
 

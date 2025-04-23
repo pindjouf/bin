@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Quick git initiliziatoooor
+
 CWD=$(echo "${PWD##*/}")
 
 if [ -d ".git" ]; then

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Simple nix installer
+
 set -e
 
 if [[ $EUID -ne 0 ]]; then

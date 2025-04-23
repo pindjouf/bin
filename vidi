@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+
+## A script so I can see the last thing I worked on (in dev)
+
+import os
+import datetime
+
+home_dir = os.path.expanduser("~") + "/"
+videos_dir = home_dir + "Videos/"
+
+def finder(directory: str) -> tuple[list, list]:
+    directories = list()
+    files = list()
+
+    with os.scandir(directory) as it:
+        for i in it:
+            if i.is_dir():
+                directories.append(i.name + "/")
+            elif i.is_file():
+                if i.name[:2] == "20":
+                    pass
+                elif ".mkv" in i.name:
+                    full_path = directory + i.name
+                    files.append(full_path)
+
+    return directories, files
+
+def main():
+    result = list()
+    directories, files = finder(videos_dir)
+
+    for i in directories:
+        tmp_dirs, tmp_files = finder(videos_dir + i)
+
+        if len(tmp_dirs) == 0 and len(tmp_files) != 0:
+            files.extend(tmp_files)
+        elif len(tmp_dirs) != 0 and len(tmp_files) == 0:
+            for j in tmp_dirs:
+                new_dirs, new_files = finder(videos_dir + i + "/" + j)
+                if len(new_dirs) == 0 and len(new_files) != 0:
+                    files.extend(new_files)
+
+    for i in files:
+        if "//" in i:
+            files[files.index(i)] = i.replace("//", "/")
+
+    for i in files:
+        result.append({i: os.stat(i).st_ctime})
+
+    tmp_list = list()
+
+    for i in result:
+        tmp_list.append(list(i.values())[0])
+
+    tmp_list = sorted(tmp_list, reverse=True)
+    new_shit = list()
+
+    for i in tmp_list:
+        for j in result:
+            if i == list(j.items())[0][1]:
+                new_shit.append({list(j.items())[0][0]: datetime.datetime.fromtimestamp(i).strftime('%Y-%m-%d %H:%M:%S')})
+
+    for i in new_shit:
+        print(i)
+
+if __name__ == "__main__":
+    main()

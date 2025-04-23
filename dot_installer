@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Dotfiles installer
+
 set -e
 
 # Function to print error messages
