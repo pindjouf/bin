@@ -45,7 +45,7 @@ def main():
             files[files.index(i)] = i.replace("//", "/")
 
     for i in files:
-        result.append({i: os.stat(i).st_ctime})
+        result.append({i: os.stat(i).st_mtime})
 
     tmp_list = list()
 
